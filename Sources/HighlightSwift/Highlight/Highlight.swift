@@ -75,7 +75,8 @@ public final class Highlight: Sendable {
             .appending(selectors)
             .appending("\n</style>")
             .appending("\n<pre><code class=\"hljs\">")
-            .appending(text.trimmingCharacters(in: .whitespacesAndNewlines))
+            // FORK NOTE: Not trimming whitespace/newlines to preserve formatting
+            .appending(text) // .trimmingCharacters(in: .whitespacesAndNewlines))
             .appending("</code></pre>")
         return html.data(using: .utf8) ?? Data()
     }
